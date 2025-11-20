@@ -1,5 +1,11 @@
 print("введите случайное целое число.")
 
 N = int(input())
-Answer = (N*(N+1))/2
-print(Answer)
+b=0
+C=0
+while b < N:
+  b += 1
+  C += b
+
+
+print(C)
