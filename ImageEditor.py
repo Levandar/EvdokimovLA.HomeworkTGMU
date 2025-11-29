@@ -23,11 +23,24 @@ def make_bw(img):
             img.putpixel((x, y), (avg, avg, avg))
     return img
 
-# def flip_vertical(img):
-
+def flip_vertical(img):
+    w, h = img.size
+    new_img = Image.new(img.mode, (w, h))
+    for x in range(w):
+        for y in range(h):
+            pixel = img.getpixel((x, y))
+            new_img.putpixel((x, h - y - 1), pixel)
+    return img
     # return img.transpose(Image.FLIP_LEFT_RIGHT)
 
-# def flip_horizontal(img):
+def flip_horizontal(img):
+    w, h = img.size
+    new_img = Image.new(img.mode, (w, h))  #Почему-то если не создавать новое изображение, а менять уже имеющееся происодит забавный баг.
+    for x in range(w):
+        for y in range(h):
+            pixel = img.getpixel((x, y))
+            new_img.putpixel((w - x - 1, y), pixel)
+    return new_img
     # return img.transpose(Image.FLIP_TOP_BOTTOM)
 
 def paint_random_square(img, color):
