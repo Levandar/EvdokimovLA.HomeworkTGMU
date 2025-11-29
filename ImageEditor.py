@@ -30,12 +30,12 @@ def flip_vertical(img):
         for y in range(h):
             pixel = img.getpixel((x, y))
             new_img.putpixel((x, h - y - 1), pixel)
-    return img
-    # return img.transpose(Image.FLIP_LEFT_RIGHT)
+    return new_img
+    # return img.transpose(Image.FLIP_LEFT_RIGHT) есть уже готовый метод из библиотеки
 
 def flip_horizontal(img):
     w, h = img.size
-    new_img = Image.new(img.mode, (w, h))  #Почему-то если не создавать новое изображение, а менять уже имеющееся происодит забавный баг.
+    new_img = Image.new(img.mode, (w, h))  #Почему-то если не создавать новое изображение, а менять уже имеющееся происходит забавный баг.
     for x in range(w):
         for y in range(h):
             pixel = img.getpixel((x, y))
@@ -112,7 +112,7 @@ while True:
 
         elif effect == "4":
             print("Введите цвет в формате R G B (например: 255 0 0):")
-            r, g, b = map(int, input().split())
+            r, g, b = map(int, input().split())  #этот метод я подсмотрел
             img = paint_random_square(img, (r, g, b))
             print("Случайный квадрат закрашен.")
             img.show()
