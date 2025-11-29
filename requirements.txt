@@ -1,0 +1,4 @@
+# Чтобы все это установить, набери в терминале IDE:
+# pip install -r .\requirements.txt
+pillow==12.0.0
+opencv-python==4.12.0.88
