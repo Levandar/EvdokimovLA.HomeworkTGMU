@@ -1,9 +1,6 @@
-class Student:
-    def __init__(self, bagpack, clothes):
-        self.bagpack = bagpack
-        self.clothes = clothes
+from StudentQuest import Student
 
-stud = Student(False, False)
+stud = Student(False, False,False)
 
 if __name__ == '__main__':
 
@@ -15,16 +12,22 @@ if __name__ == '__main__':
             print("Сначала лучше собрать сумку.")
 
     def facewash():
-        print("""Ты смотришь на себя в зеркало и думаешь: зачем это всё?
-                    Умываешься и становится немного легче. Появляются силы действовать дальше.""")
+        if stud.facewash:
+            print('Ты уже умылся')
+        else:
+            print("""Ты смотришь на себя в зеркало и думаешь: зачем это всё?
+                        Умываешься и становится немного легче. Появляются силы действовать дальше.""")
+            stud.facewash = True
 
     def food():
         print("Какая еда?! Тебе ещё два часа на автобусе ехать, надо выходить, а то опоздаешь.")
 
     def backpack():
-        print('Теперь осталось одеться и можно выходить.')
-        stud.bagpack = True
-        # return True
+        if stud.bagpack:
+            print('Рюкзак уже собран')
+        else:
+            print('Теперь осталось одеться и можно выходить.')
+            stud.bagpack = True
 
     print("Звонит будильник. На часах 6 утра. Встать с кровати или спать дальше?")
     enter = input("Встать/Спать")
@@ -41,11 +44,10 @@ if __name__ == '__main__':
                     food()
                 elif choose == 3:
                     clothes()
-                    if stud.clothes == True:
+                    if stud.clothes:
                         break
                 elif choose == 4:
                     backpack()
-
                 else:
                     print("""К сожалению, ты заперт в клетке остоятельств. 
                                 Нужно выбрать один из доступных вариантов.""")
