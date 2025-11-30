@@ -74,6 +74,18 @@ def add_noise(img):
         )  # случайный цвет каждого пикселя
     return img
 
+def save_image(img):
+    while True:
+        filename = input("Введите имя файла для сохранения (например output.png): ")
+
+        try:
+            img.save(filename)
+            print(f"Изображение сохранено как {filename}")
+            exit()
+        except Exception as e:
+            print(f"Ошибка сохранения: {e}")
+            print("Попробуйте снова.")
+
 # 3. Основная программа
 
 image_path = input("Введите путь к изображению: ")
@@ -126,16 +138,7 @@ while True:
             print("Некорректный пункт.")
 
     elif choice == "2":
-        while True:
-            filename = input("Введите имя файла для сохранения (например output.png): ")
-
-            try:
-                img.save(filename)
-                print(f"Изображение сохранено как {filename}")
-                exit()
-            except Exception as e:
-                print(f"Ошибка сохранения: {e}")
-                print("Попробуйте снова.")
+        save_image(img)
 
     else:
         print("Некорректный выбор. Повторите.")
